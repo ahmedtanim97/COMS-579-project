@@ -1,2 +1,4 @@
 llamaindex
 pymupdf
+pinecone-client
+
