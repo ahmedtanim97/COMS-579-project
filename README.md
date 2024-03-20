@@ -1,2 +1,12 @@
 # COMS-579-project
 COM S 579 NLP project
+## Installation
+```pip install -r requirements.txt```
+
+### Command Line
+
+#### How to upload PDF?
+
+```python upload.py --pdf_file example.pdf```
+
+ [Video]

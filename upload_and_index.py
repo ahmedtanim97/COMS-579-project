@@ -13,9 +13,7 @@ tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v
 model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 
 def embed_text(chunk):
-    """
-    Generates an embedding for a text chunk using Hugging Face's transformers.
-    """
+
     # Tokenize the text chunk
     inputs = tokenizer(chunk, return_tensors="pt", padding=True, truncation=True, max_length=512)
 
@@ -32,7 +30,7 @@ def embed_text(chunk):
     # Convert to list and return
     return embeddings.squeeze().tolist()
 
-
+#Initialize pinecone
 pc = Pinecone(api_key="93d07fdf-8263-4af9-99e7-1d0a98a4e504")
 index = pc.Index("rag-system")
 
@@ -56,14 +54,6 @@ def chunk_text(text, chunk_size=500):
     chunks = [' '.join(words[i:i+chunk_size]) for i in range(0, len(words), chunk_size)]
     return chunks
 
-# def embed_text(chunk):
-#     """
-#     Generates an embedding for a text chunk.
-#     Replace this with your actual embedding code using LlamaIndex.
-#     """
-#     # Placeholder for embedding generation
-#     # Return a list of embeddings
-#     return [0.0] * 768  # Example: 768-dimensional zero vector
 
 def upload_and_index(pdf_path):
     """Processes a PDF file and indexes its content."""
