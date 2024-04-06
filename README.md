@@ -1,6 +1,6 @@
 # COMS-579-project
 COM S 579 NLP project
-## Installation
+## Requirements Installation
 ```pip install -r requirements.txt```
 
 ### Command Line
