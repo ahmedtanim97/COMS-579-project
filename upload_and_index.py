@@ -60,13 +60,15 @@ def upload_and_index(pdf_path):
     text = read_pdf(pdf_path)
     cleaned_text = clean_text(text)
     chunks = chunk_text(cleaned_text)
-
-    # Embed each chunk and store embeddings
     for i, chunk in enumerate(chunks):
         embedding = embed_text(chunk)
-          # Generate embedding
-        index.upsert(vectors=[(str(i), embedding)])  # Store embedding in Pinecone
+        index.upsert(vectors=[(str(i), embedding, {'text': chunk})])  # Store embedding and text in Pinecone
 
+def query_index(query):
+    """Queries the Pinecone index with a user-provided search query."""
+    query_embedding = embed_text(query)
+    results = index.query(query_embedding, top_k=5, include_metadata=True)
+    return [(match['metadata']['text'], match['score']) for match in results['matches']]
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Upload and index a PDF file.")
     parser.add_argument("--pdf_file", type=str, required=True, help="Path to the PDF file to be uploaded and indexed.")
