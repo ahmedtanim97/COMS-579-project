@@ -45,12 +45,7 @@ def generate_answer_with_gpt(texts):
     combined_context = ' '.join(texts)  # Combine the texts into one continuous block of text
 
     # Ensure your API key is securely configured and loaded
-<<<<<<< HEAD
     openai.api_key = ""
-=======
-    openai.api_key = "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"
->>>>>>> 8fe79bc (added openai api)
-
     try:
         # Send a completion request to the OpenAI API
         response = openai.Completion.create(
