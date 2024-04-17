@@ -48,10 +48,11 @@ def clean_text(text):
     cleaned_text = re.sub(r'\s+', ' ', cleaned_text)  # Replace multiple spaces with single space
     return cleaned_text
 
-def chunk_text(text, chunk_size=500):
-    """Chunks text into pieces. Returns a list of text chunks."""
+def chunk_text(text, chunk_size=500, overlap=0.25):
+    """Chunks text into overlapping pieces."""
     words = text.split()
-    chunks = [' '.join(words[i:i+chunk_size]) for i in range(0, len(words), chunk_size)]
+    chunk_step = int(chunk_size * (1 - overlap))  # Calculate step size based on overlap
+    chunks = [' '.join(words[i:i+chunk_size]) for i in range(0, len(words), chunk_step) if i + chunk_size <= len(words)]
     return chunks
 
 
