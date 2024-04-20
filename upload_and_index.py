@@ -3,6 +3,7 @@ import fitz  # PyMuPDF
 import re
 import pinecone
 import os
+import openai
 
 from dotenv import load_dotenv, find_dotenv
 from pinecone import Pinecone
@@ -13,7 +14,8 @@ import numpy as np
 # Initialize tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
-load_dotenv(find_dotenv())
+# load_dotenv(find_dotenv())
+openai.api_key = ""
 # def embed_text(chunk):
 #
 #     # Tokenize the text chunk
