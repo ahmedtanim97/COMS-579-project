@@ -8,7 +8,7 @@ from pinecone import Pinecone
 import openai
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-openai.api_key = "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"
+openai.api_key = ""
 
 # Initialize Pinecone
 pc = Pinecone(api_key="93d07fdf-8263-4af9-99e7-1d0a98a4e504")
