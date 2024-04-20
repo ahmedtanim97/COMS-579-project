@@ -11,28 +11,14 @@ from transformers import AutoTokenizer, AutoModel
 import torch
 import numpy as np
 
+load_dotenv(find_dotenv())
+
 # Initialize tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 # load_dotenv(find_dotenv())
-openai.api_key = ""
-# def embed_text(chunk):
-#
-#     # Tokenize the text chunk
-#     inputs = tokenizer(chunk, return_tensors="pt", padding=True, truncation=True, max_length=512)
-#
-#     # Move the tensors to the same device as the model
-#     inputs = {name: tensor.to(model.device) for name, tensor in inputs.items()}
-#
-#     # Generate embeddings
-#     with torch.no_grad():
-#         outputs = model(**inputs)
-#
-#     # Pool the outputs into a single mean vector
-#     embeddings = outputs.last_hidden_state.mean(dim=1)
-#
-#     # Convert to list and return
-#     return embeddings.squeeze().tolist()
+openai.api_key = os.getenv('openai_api_key')
+
 def embed_text(chunk):
     from llama_index.embeddings.openai import OpenAIEmbedding
     embed_model = OpenAIEmbedding()
@@ -42,7 +28,7 @@ def embed_text(chunk):
 
 
 #Initialize pinecone
-pc = Pinecone(api_key="93d07fdf-8263-4af9-99e7-1d0a98a4e504")
+pc = Pinecone(os.getenv('pinecone_api_key'))
 index = pc.Index("rag-system")
 
 def read_pdf(pdf_path):

@@ -8,10 +8,12 @@ from pinecone import Pinecone
 import openai
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-openai.api_key = ""
+load_dotenv(find_dotenv())
+
+openai.api_key = os.getenv('openai_api_key')
 
 # Initialize Pinecone
-pc = Pinecone(api_key="93d07fdf-8263-4af9-99e7-1d0a98a4e504")
+pc = Pinecone(os.getenv('pinecone_api_key'))
 index = pc.Index("rag-system")
 
 def process_question_to_embedding(question):
@@ -54,7 +56,6 @@ def generate_answer_with_gpt(texts):
     combined_context = ' '.join(texts)  # Combine the texts into one continuous block of text
 
     # Ensure your API key is securely configured and loaded
-    load_dotenv(find_dotenv())
     try:
         # Send a completion request to the OpenAI API
         response = openai.Completion.create(

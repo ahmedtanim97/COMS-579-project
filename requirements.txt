@@ -4,4 +4,5 @@ pinecone-client
 transformers
 torch
 python-dotenv
+virtualenv
 openai
