@@ -3,6 +3,8 @@ import fitz  # PyMuPDF
 import re
 import pinecone
 import os
+
+from dotenv import load_dotenv, find_dotenv
 from pinecone import Pinecone
 from transformers import AutoTokenizer, AutoModel
 import torch
@@ -11,24 +13,31 @@ import numpy as np
 # Initialize tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
-
+load_dotenv(find_dotenv())
+# def embed_text(chunk):
+#
+#     # Tokenize the text chunk
+#     inputs = tokenizer(chunk, return_tensors="pt", padding=True, truncation=True, max_length=512)
+#
+#     # Move the tensors to the same device as the model
+#     inputs = {name: tensor.to(model.device) for name, tensor in inputs.items()}
+#
+#     # Generate embeddings
+#     with torch.no_grad():
+#         outputs = model(**inputs)
+#
+#     # Pool the outputs into a single mean vector
+#     embeddings = outputs.last_hidden_state.mean(dim=1)
+#
+#     # Convert to list and return
+#     return embeddings.squeeze().tolist()
 def embed_text(chunk):
+    from llama_index.embeddings.openai import OpenAIEmbedding
+    embed_model = OpenAIEmbedding()
+    vector = embed_model.get_text_embedding(chunk)
+    return vector
 
-    # Tokenize the text chunk
-    inputs = tokenizer(chunk, return_tensors="pt", padding=True, truncation=True, max_length=512)
 
-    # Move the tensors to the same device as the model
-    inputs = {name: tensor.to(model.device) for name, tensor in inputs.items()}
-
-    # Generate embeddings
-    with torch.no_grad():
-        outputs = model(**inputs)
-
-    # Pool the outputs into a single mean vector
-    embeddings = outputs.last_hidden_state.mean(dim=1)
-
-    # Convert to list and return
-    return embeddings.squeeze().tolist()
 
 #Initialize pinecone
 pc = Pinecone(api_key="93d07fdf-8263-4af9-99e7-1d0a98a4e504")
