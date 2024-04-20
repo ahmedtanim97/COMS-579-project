@@ -1,7 +1,14 @@
 # COMS-579-project
 COM S 579 NLP project
+
+## Creating new python environment
+```python<version> -m venv <virtual-environment-name>```
+## Activating environment
+```source <environment-name>/bin/activate```
 ## Requirements Installation
 ```pip install -r requirements.txt```
+
+## Create a .env file in the root folder, follow the env-template and place your api_key inplace of the empty string with your openai and pinecone api key
 
 ### Command Line
 
