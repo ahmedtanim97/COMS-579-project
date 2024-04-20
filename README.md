@@ -21,3 +21,5 @@ COM S 579 NLP project
 #### Answer generation based on user query from command line
 
 ```python query.py --question="What is Mistral AI?"```
+
+[Video](https://iastate.box.com/s/j9bf163h3wlj8i3xmg3tkeetisq93a47) 
