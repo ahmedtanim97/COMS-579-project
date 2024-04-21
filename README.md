@@ -2,9 +2,16 @@
 COM S 579 NLP project
 
 ## Creating new python environment
+For macOS/Linux
 ```python<version> -m venv <virtual-environment-name>```
+For Windows
+```python -<version> -m venv <virtual-environment-name>```
+
 ## Activating environment
-```source <environment-name>/bin/activate```
+For macOS/Linux
+```source <virtual-environment-name>/bin/activate```
+For Windows
+```<virtual-environment-name>\Scripts\activate```
 ## Requirements Installation
 ```pip install -r requirements.txt```
 
