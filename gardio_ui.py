@@ -6,7 +6,7 @@ def answer_question(question):
     return get_answer(question)
 
 def index_pdf(file_path):
-    upload_and_index(file_path.name)  # Assuming file_path is the uploaded file
+    upload_and_index(file_path.name)
     return "File indexed successfully."
 
 def search_query(query):
@@ -23,5 +23,7 @@ with gr.Blocks() as demo:
             pdf_input = gr.File(label="Upload PDF")
             pdf_output = gr.Text(label="Indexing Status")
             pdf_button = gr.Button("Index PDF")
+    question_button.click(answer_question, inputs=question_input, outputs=answer_output)
+    pdf_button.click(index_pdf, inputs=pdf_input, outputs=pdf_output)
 
-demo.launch()
+demo.launch(share = True)

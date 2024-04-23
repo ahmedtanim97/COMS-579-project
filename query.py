@@ -32,8 +32,6 @@ def get_answer(question):
     query_result = index.query(vector=query_vector, top_k=5, include_metadata=True)
 
     _nodes = []
-    print("Query: ", question)
-    print("Retrieval")
     for i, _t in enumerate(query_result['matches']):
         try:
             _node = TextNode(text=_t['metadata']['text'])
@@ -47,8 +45,7 @@ def get_answer(question):
     # Re-rank
     query_engine = _index.as_query_engine(similarity_top_k=5, llm=llm)
     response = query_engine.query(question)
-    print("Answer: ")
-    print(str(response))
+    return (str(response))
 
 
 def generate_answer_with_gpt(texts):
