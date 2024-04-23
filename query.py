@@ -24,20 +24,33 @@ def process_question_to_embedding(question):
 
 
 def get_answer(question):
-    """
-    Queries Pinecone with the provided question and returns the most relevant answers.
-    """
+    
+    # query_vector = process_question_to_embedding(question)
+    # # Include metadata in the results
+    # query_result = index.query(vector=query_vector, top_k=5, include_metadata=True)
+
+    # _nodes = []
+    # for i, _t in enumerate(query_result['matches']):
+    #     try:
+    #         _node = TextNode(text=_t['metadata']['text'])
+    #         _nodes.append(_node)
+    #     except Exception as e:
+    #         print(e)
+
+    # # create vector store index
+    # _index = VectorStoreIndex(_nodes)
+    # llm = OpenAI(model="gpt-3.5-turbo", temperature=0.1)
+    # # Re-rank
+    # query_engine = _index.as_query_engine(similarity_top_k=5, llm=llm)
+    # response = query_engine.query(question)
+    # return (str(response))
     query_vector = process_question_to_embedding(question)
-    # Include metadata in the results
+    # Query Pinecone index for top results
     query_result = index.query(vector=query_vector, top_k=5, include_metadata=True)
 
     _nodes = []
-    for i, _t in enumerate(query_result['matches']):
-        try:
-            _node = TextNode(text=_t['metadata']['text'])
-            _nodes.append(_node)
-        except Exception as e:
-            print(e)
+    for match in query_result['matches']:
+        _nodes.append(TextNode(text=match['metadata']['text']))
 
     # create vector store index
     _index = VectorStoreIndex(_nodes)
@@ -45,7 +58,10 @@ def get_answer(question):
     # Re-rank
     query_engine = _index.as_query_engine(similarity_top_k=5, llm=llm)
     response = query_engine.query(question)
-    return (str(response))
+
+    # Adding this to return the re-ranked response and a selection of other top responses for comparison
+    other_top_answers = [node.text for node in _nodes[:3]]  # Return the text of top 3 nodes for comparison
+    return [str(response)] + other_top_answers
 
 
 def generate_answer_with_gpt(texts):
