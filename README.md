@@ -13,10 +13,13 @@ For macOS/Linux
 ```source <virtual-environment-name>/bin/activate``` <br>
 
 For Windows<br>
+
 modify the execution policy for PowerShell scripts (if needed) 
 ```Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass```<br>
+
 Activate the environment
 ```<virtual-environment-name>\Scripts\activate```
+
 ## Requirements Installation
 ```pip install -r requirements.txt```
 
