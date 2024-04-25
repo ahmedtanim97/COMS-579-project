@@ -9,10 +9,6 @@ def index_pdf(file_path):
     upload_and_index(file_path.name)
     return "File indexed successfully."
 
-def search_query(query):
-    results = query_index(query)
-    return results
-
 with gr.Blocks() as demo:
     with gr.Row():
         with gr.Column():
@@ -26,4 +22,4 @@ with gr.Blocks() as demo:
     question_button.click(answer_question, inputs=question_input, outputs=answer_output)
     pdf_button.click(index_pdf, inputs=pdf_input, outputs=pdf_output)
 
-demo.launch(share = True)
+demo.launch()
