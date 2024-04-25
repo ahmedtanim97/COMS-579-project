@@ -3,14 +3,19 @@ COM S 579 NLP project
 
 ## Creating new python environment
 For macOS/Linux
-```python<version> -m venv <virtual-environment-name>```
+```python<version> -m venv <virtual-environment-name>``` <br>
+
 For Windows
-```python -<version> -m venv <virtual-environment-name>```
+```py -<version> -m venv <virtual-environment-name>```
 
 ## Activating environment
 For macOS/Linux
-```source <virtual-environment-name>/bin/activate```
-For Windows
+```source <virtual-environment-name>/bin/activate``` <br>
+
+For Windows<br>
+modify the execution policy for PowerShell scripts (if needed) 
+```Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass```<br>
+Activate the environment
 ```<virtual-environment-name>\Scripts\activate```
 ## Requirements Installation
 ```pip install -r requirements.txt```
