@@ -7,7 +7,7 @@ Welcome to the COMS-579 Natural Language Processing project repository! This gui
 
 **For macOS/Linux:**
 ```bash
-python3 -m venv <virtual-environment-name>
+python3 -m venv <virtual-environment-name>```
 
 For Windows
 ```py -<version> -m venv <virtual-environment-name>```
