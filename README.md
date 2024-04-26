@@ -1,5 +1,5 @@
 # COMS-579-project
-COM S 579 NLP project
+Welcome to the COMS-579 Natural Language Processing project repository! This guide will help you set up your project environment and run the project scripts.
 
 ## Creating new python environment
 For macOS/Linux
