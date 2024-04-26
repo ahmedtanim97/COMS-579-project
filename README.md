@@ -1,6 +1,8 @@
 # COMS-579-project
 Welcome to the COMS-579 Natural Language Processing project repository! This guide will help you set up your project environment and run the project scripts.
 
+## 🚀 Setting Up Your Python Environment
+
 ## Creating new python environment
 For macOS/Linux
 ```python<version> -m venv <virtual-environment-name>``` <br>
