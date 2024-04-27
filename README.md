@@ -41,3 +41,6 @@ Activate the environment
 ```python query.py --question="What is Mistral AI?"```
 
 [Video](https://iastate.box.com/s/j9bf163h3wlj8i3xmg3tkeetisq93a47) 
+
+##### Gardio App deployment in Hugging Face Space
+[Link](https://huggingface.co/spaces/ahmedtanim97/rag-system)
