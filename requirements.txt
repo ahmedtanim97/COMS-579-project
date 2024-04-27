@@ -7,5 +7,4 @@ python-dotenv
 virtualenv
 openai
 gradio
-fastapi
-uvicorn
+
