@@ -63,7 +63,6 @@ with gr.Blocks(css=css) as demo:
     )
     pdf_button.click(index_pdf, inputs=pdf_input, outputs=pdf_output)
 
-demo.launch(share=True)
 
 
 
