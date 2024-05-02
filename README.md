@@ -42,5 +42,11 @@ Activate the environment
 
 [Video](https://iastate.box.com/s/j9bf163h3wlj8i3xmg3tkeetisq93a47) 
 
-##### Gardio App deployment in Hugging Face Space
+##### Gradio UI command to run locally 
+
+```python gradio_ui.py```
+
+##### Gradio App deployment in Hugging Face Space
 [Link](https://huggingface.co/spaces/ahmedtanim97/rag-system)
+
+[Video](https://iastate.box.com/s/d3qw7su0h3nbjhfjn6tpmbn4izre02ql)
